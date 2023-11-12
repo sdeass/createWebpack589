@@ -10,7 +10,26 @@
                     var xegp = /[^=?]*/g;
                     var url = window.location.search;
                     var obj = {};
-                    url.substring(1).match(regp).forEach(e=>{
+                    if(f==='YDT'){
+                        url = decodeURIComponent(url);
+                    }
+                    var iindex = url.indexOf('??');
+                    var index =  url.indexOf('?');
+                    iindex > -1 ? url.substring(iindex + 1).match(regp).forEach(e=>{
+                        if(e){  
+                        var a = e.match(xegp);
+                        var keys = a[0]
+                        var value = a[2];
+                        obj[keys]=value;
+                        }
+                    }) : index > -1 ? url.substring(index + 1).match(regp).forEach(e=>{
+                        if(e){  
+                        var a = e.match(xegp);
+                        var keys = a[0]
+                        var value = a[2];
+                        obj[keys]=value;
+                        }
+                    }) : url.match(regp).forEach(e=>{
                         if(e){  
                         var a = e.match(xegp);
                         var keys = a[0]
@@ -33,9 +52,6 @@
                     }
                     if(f==='YT'){
                         url = encodeURIComponent(ar.join('&'));
-                    }
-                    if(f==='YDT'){
-                        url = decodeURIComponent(ar.join('&'));
                     }
                     return ar.join('&');
                     }
