@@ -4,6 +4,39 @@
     <title>TESTING</title>
     <body>
      <script src="dist/bundle.js"></script>
+     <script>
+        function ssptJson(f){
+                    var regp = /[^&?]*/g;
+                    var xegp = /[^=?]*/g;
+                    var url = window.location.search;
+                    var obj = {};
+                    url.substring(1).match(regp).forEach(e=>{
+                        if(e){  
+                        var a = e.match(xegp);
+                        var keys = a[0]
+                        var value = a[2];
+                        obj[keys]=value;
+                        }
+                    })
+                    if(f==='YT'){
+                        url = encodeURIComponent(obj);
+                    }
+                    return obj;
+                    }
+     </script>
+      <script>
+        function ssptStringly(obj,f){
+                    var ar = []
+                    var url = window.location.search;
+                    for(var k  in obj){
+                    ar.push(k.concat('=',obj[k]));
+                    }
+                    if(f==='YT'){
+                        url = encodeURIComponent(ar.join('&'));
+                    }
+                    return ar.join('&');
+                    }
+     </script>
      <div>welcome to study </div>
     </body>
 </head>
