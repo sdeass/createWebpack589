@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import Container from "./Container";
+import SheckContainer from "./Container";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<Container />);
+function initComponent() {
+  ReactDOM.render(<SheckContainer />, document.getElementById("root"));
+}
+
+initComponent();

@@ -1,4 +1,3 @@
-const wp = require("webpack");
 const ELhtmlWebpackPlugin = require("html-webpack-plugin");
 
 const { resolve } = require("./utils");
@@ -38,5 +37,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [new ELhtmlWebpackPlugin({ template: "./public/index.html" })],
+  plugins: [
+    new ELhtmlWebpackPlugin({
+      template: "./public/index.html",
+      favicon: "./public//favicon.ico",
+    }),
+  ],
 };
