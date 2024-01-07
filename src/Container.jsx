@@ -1,5 +1,7 @@
 import React from "react";
 import Select from "./component/Select";
+import Background from "./component/Background";
+// import bg from "../public/1445.png";
 const options = [
   { value: "BAL", label: "baba" },
   { value: "XIXI", label: "xixi" },
@@ -17,6 +19,8 @@ class SheckContainer extends React.Component {
     return (
       <div>
         this is Container
+        {/* <div style={{ height: "300px", width: "100%", url: bg }}></div> */}
+        <Background />
         <Select options={options} />
       </div>
     );

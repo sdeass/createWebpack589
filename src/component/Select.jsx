@@ -24,8 +24,8 @@ const SelectContainer = styled.div`
   }
   .paginationSelectContainer-optionsList {
     position: absolute;
-    color: #fff;
-    background: #e66628;
+    color: #333;
+    background: rgb(235, 237, 240);
     width: 100%;
     margin-top: 0.2rem;
     overflow-y: auto;
@@ -33,22 +33,26 @@ const SelectContainer = styled.div`
     max-height: 6rem;
     line-height: 3rem;
     z-index: 9999;
+    border-left: 1px solid;
+    border-right: 1px solid;
   }
   .paginationSelectContainer-optionsList::-webkit-scrollbar {
     width: 0.4rem;
     background-color: #eee;
   }
   .paginationSelectContainer-optionsList::-webkit-scrollbar-thumb {
-    background-color: rgba(27, 232, 59, 0.64);
+    background-color: #333333;
   }
   .paginationSelectContainer-option {
     padding: 0 0.2rem;
   }
   .paginationSelectContainer-option:hover {
-    background-color: rgba(27, 232, 59, 0.64);
+    background-color: #333333;
+    color: #eee;
   }
   .poActive {
-    background-color: rgba(27, 232, 59, 0.64);
+    background-color: #333333;
+    color: #eee;
   }
 `;
 const Select = forwardRef((props, ref) => {
@@ -62,8 +66,13 @@ const Select = forwardRef((props, ref) => {
     activeClassNameProps = "poActive",
     ...rest
   } = props;
+  const defalutStyles = {
+    height: 0,
+    borderTop: 0,
+    borderBottom: 0,
+  };
   const ol = useMemo(() => options, [props]);
-  const [normarlHeight, setNormarlHeight] = useState(0);
+  const [normarlHeight, setNormarlHeight] = useState(defalutStyles);
   const [isShow, updateIsShow] = useState(false);
   const [title, updateTitle] = useState(defalutTitle ?? "--Select--");
   const [selectKey, updateSelected] = useState(0);
@@ -72,10 +81,14 @@ const Select = forwardRef((props, ref) => {
   const onOptionShowEvent = useCallback(
     (e) => {
       if (isShow) {
-        setNormarlHeight(0);
+        setNormarlHeight(defalutStyles);
         updateIsShow(!isShow);
       } else {
-        setNormarlHeight("6.8rem");
+        setNormarlHeight({
+          height: "6.8rem",
+          borderTop: "1px solid",
+          borderBottom: "1px solid",
+        });
         updateIsShow(true);
       }
     },
@@ -115,7 +128,7 @@ const Select = forwardRef((props, ref) => {
       </div>
       <div
         className="paginationSelectContainer-optionsList"
-        style={{ height: normarlHeight, ...listStyle }}
+        style={{ ...normarlHeight, ...listStyle }}
       >
         {Array.isArray(ol) &&
           ol.length > 0 &&
