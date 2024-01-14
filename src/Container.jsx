@@ -1,7 +1,8 @@
 import React from "react";
 import Select from "./component/Select";
 import Background from "./component/Background";
-// import bg from "../public/1445.png";
+import Background2 from "./component/Background2";
+import bg from "./static/1445.png";
 const options = [
   { value: "BAL", label: "baba" },
   { value: "XIXI", label: "xixi" },
@@ -17,11 +18,24 @@ class SheckContainer extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ height: "100%", width: "100%", position: "absolute" }}>
         this is Container
-        {/* <div style={{ height: "300px", width: "100%", url: bg }}></div> */}
+        <div
+          style={{
+            height: "20%",
+            width: "39%",
+            background: `url(${bg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "100%",
+            position: "absolute",
+            top: "30%",
+            left: "8%",
+          }}
+        >
+          <Select options={options} />
+        </div>
+        <Background2 />
         <Background />
-        <Select options={options} />
       </div>
     );
   }

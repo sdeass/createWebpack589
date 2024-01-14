@@ -36,6 +36,19 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|docx|doc)$/,
+        include: resolve("src"),
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+              name: "images/[contenthash].[ext]",
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [new ELhtmlWebpackPlugin({ template: "./public/index.html" })],

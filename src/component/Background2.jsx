@@ -2,12 +2,10 @@ import React, { memo } from "react";
 import styled from "styled-components";
 const Background = styled.div`
   position: absolute;
-  // background: #ebedf0;
   height: 100%;
   width: 100%;
-  opacity: 0.1;
-  top: 0px;
-  left: 11%;
+  top: 5%;
+  left: 22%;
 `;
 export default memo(() => {
   return (

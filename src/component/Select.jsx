@@ -11,7 +11,10 @@ import styled from "styled-components";
 const SelectContainer = styled.div`
   width: 30rem;
   cursor: pointer;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 9;
   .paginationSelectContainer-warrper {
     padding: 0.4rem;
     line-height: 2.5rem;
